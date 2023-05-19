@@ -1,7 +1,15 @@
-function gerarTexto() {
+function toggleValorMercado() {
+    const valorMercadoInput = document.getElementById("valor_mercado");
+    const temValorMercadoCheckbox = document.getElementById("tem_valor_mercado");
+
+    valorMercadoInput.disabled = !temValorMercadoCheckbox.checked;
+  }
+
+  function gerarTexto() {
     const marca = document.getElementById("marca").value;
     const modelo = document.getElementById("modelo").value;
     const ano = document.getElementById("ano").value;
+    const anoMod = document.getElementById("anoMod").value;
     const km = document.getElementById("km").value;
     const combustivel = document.getElementById("combustivel").value;
     const tipo_cambio = document.getElementById("tipo_cambio").value;
@@ -14,20 +22,22 @@ function gerarTexto() {
     const valor_fipe = document.getElementById("valor_fipe").value;
     const custo_investimento = document.getElementById("custo_investimento").value;
     const link_fotos = document.getElementById("link_fotos").value;
+    const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
+    const valor_mercado = document.getElementById("valor_mercado").value;
 
-    const texto = `📍 PAGMOTORS (PORTO ALEGRE)<br>
+    let texto = `📍 PAGMOTORS (PORTO ALEGRE)<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
 
     ${marca} ${modelo}<br><br>
 
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
 
-    ⏳Ano: ${ano}<br>
+    ⏳Ano: ${ano}/${anoMod}<br>
     🎛KM: ${km}<br>
     ⛽ Combustível: ${combustivel}<br>
     🕹Cambio: ${tipo_cambio}<br>
     🛞Pneus: ${status_pneu}<br>
-    📄Ipva: ${ipva} - PAGO<br>
+    📄Ipva: ${ipva}<br>
     ⚠ Placa: ${placa}<br>
     🔖Opcionais: ${opcionais}<br>
     📝Avaliação Superficial: ${avaliacao_superficial}<br>
@@ -37,18 +47,23 @@ function gerarTexto() {
     ${link_fotos}<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
     📈Valor Fipe: ${valor_fipe}<br>
-    📉Investimento: ${custo_investimento}<br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
+    📉Investimento: ${custo_investimento}<br>`;
+
+    if (tem_valor_mercado) {
+      texto += `🏦Valor de Mercado: ${valor_mercado}<br>`;
+    }
+
+    texto += `▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
     CONTATO PAGMOTORS <br>
-    📲 (51)99994-2576`;
-
+    📲 (51)99994-2576`;
+    
     document.getElementById("texto").innerHTML = texto;
-}
+  }
 
-function copiarTexto() {
+  function copiarTexto() {
     const texto = document.getElementById("texto").innerText;
 
     navigator.clipboard.writeText(texto)
-        .then(() => alert("Texto copiado com sucesso!"))
-        .catch((error) => alert(`Ocorreu um erro ao copiar o texto: ${error}`));
-}
+      .then(() => alert("Texto copiado com sucesso!"))
+      .catch((error) => alert(`Ocorreu um erro ao copiar o texto: ${error}`));
+  }
