@@ -67,3 +67,55 @@ function toggleValorMercado() {
       .then(() => alert("Texto copiado com sucesso!"))
       .catch((error) => alert(`Ocorreu um erro ao copiar o texto: ${error}`));
   }
+
+  function visualizarFoto() {
+    var fotoInput = document.getElementById("foto");
+    var fotoPreview = document.getElementById("foto-preview");
+
+    if (fotoInput.files && fotoInput.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        fotoPreview.src = e.target.result;
+      }
+
+      reader.readAsDataURL(fotoInput.files[0]);
+    }
+  }
+
+  function compartilharWhatsApp() {
+    var texto = document.getElementById("texto").value;
+    var fotoInput = document.getElementById("foto");
+    
+    if (fotoInput.files.length > 0) {
+      var foto = fotoInput.files[0];
+      var formData = new FormData();
+      formData.append("texto", texto);
+      formData.append("foto", foto);
+      
+      // Enviar o formData para o servidor ou manipulá-lo de acordo com suas necessidades
+      // ...
+    } else {
+      // Caso nenhum arquivo tenha sido selecionado, enviar apenas o texto
+      var textoCodificado = encodeURIComponent(texto);
+      var link = "https://api.whatsapp.com/send?text=" + textoCodificado;
+      window.open(link);
+    }
+  }
+
+  function exibirFotoPreview(event) {
+    const input = event.target;
+    const fotoContainer = document.querySelector(".foto-container");
+    const texto = fotoContainer.querySelector("label");
+  
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+  
+      reader.onload = function (e) {
+        fotoContainer.style.backgroundImage = `url('${e.target.result}')`;
+        texto.style.display = "none"; // Oculta o texto
+      };
+  
+      reader.readAsDataURL(input.files[0]);
+    }
+  }

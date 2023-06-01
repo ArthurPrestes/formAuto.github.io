@@ -7,25 +7,13 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <title>Formulario Veiculo</title>
 	<link rel="icon" href="assets/img/logo.png" type="image/png">
-	<link rel="stylesheet" href="index.css">
 </head>
 <body>
-
 	<div class="container">
 		<h1><span class="badge badge-secondary">Formulário de Veículo</span></h1>
 	
 		<form id="formulario">
 			<div class="row">
-				<div class="foto-container">
-					<label for="foto" class="foto-label">
-					  Clique aqui ou arraste e solte a foto
-					</label>
-					<input type="file" id="foto" class="foto-input" onchange="exibirFotoPreview(event)">
-				</div>
-			</div>
-
-			<div class="row">
-
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="marca">Marca</label>
@@ -166,6 +154,21 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="form-group">
+				<label for="foto">Adicionar foto:</label>
+				<div class="input-group">
+				  <div class="custom-file">
+					<input type="file" class="custom-file-input" id="foto" name="foto" accept="image/*" onchange="visualizarFoto()">
+					<label class="custom-file-label" for="foto">Escolher arquivo</label>
+				  </div>
+				</div>
+			  </div>
+		  
+			  <div id="visualizacao-foto" class="form-group">
+				<label>Foto:</label>
+				<img id="foto-preview" class="img-fluid" src="#" alt="Visualização da foto">
+			  </div>
 	
 			<button type="button" onclick="gerarTexto()" class="btn btn-primary">Gerar Texto</button>
 			
