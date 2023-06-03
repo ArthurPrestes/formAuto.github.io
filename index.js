@@ -38,7 +38,13 @@ function toggleValorMercado() {
     🕹Cambio: ${tipo_cambio}<br>
     🛞Pneus: ${status_pneu}<br>
     📄Ipva: ${ipva}<br>
-    ⚠ Placa: ${placa}<br>
+    ⚠ Placa:`;  
+    
+    first_placa = placa[0]
+    last_placa = placa[6]
+    texto += `${first_placa} final ${last_placa}<br>
+    
+    
     🔖Opcionais: ${opcionais}<br>
     📝Avaliação Superficial: ${avaliacao_superficial}<br>
     📎Observação: ${observacoes}<br><br>
@@ -46,8 +52,8 @@ function toggleValorMercado() {
     📷PARA MAIS FOTOS CLICK NO LINK<br>
     ${link_fotos}<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
-    📈Valor Fipe: ${valor_fipe}<br>
-    📉Investimento: ${custo_investimento}<br>`;
+    📈Valor Fipe: R$ ${valor_fipe}<br>
+    📉Investimento: R$ ${custo_investimento}<br>`;
 
     if (tem_valor_mercado) {
       texto += `🏦Valor de Mercado: ${valor_mercado}<br>`;
