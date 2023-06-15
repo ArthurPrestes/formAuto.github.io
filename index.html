@@ -125,7 +125,15 @@
 						<div class="col-md-6">
 						  <div class="form-group">
 							<label for="valor_fipe">Valor da Tabela Fipe:</label>
-							<input type="text" class="form-control" id="valor_fipe" name="valor_fipe" required>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+								  <span class="input-group-text">R$</span>
+								</div>
+								<input type="text" id="valor_fipe" class="form-control" aria-label="Quantia">
+								<div class="input-group-append">
+								  <span class="input-group-text">.00</span>
+								</div>
+							</div>
 						  </div>
 						</div>
 						<div class="col-md-6">

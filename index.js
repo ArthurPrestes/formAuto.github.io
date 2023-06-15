@@ -25,6 +25,19 @@ function toggleValorMercado() {
     const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
     const valor_mercado = document.getElementById("valor_mercado").value;
 
+    function adicionarParteDecimal(numero) {
+      if (/\.\d{2}$/.test(numero)) {
+        numero = numero.replace('.', ',');
+      } else if (!/\,\d{2}$/.test(numero)) {
+        numero += ',00';
+      }
+      return numero;
+    }
+    
+        
+    var fipe = adicionarParteDecimal(valor_fipe);
+    var investimento = adicionarParteDecimal(custo_investimento);
+
     let texto = `📍 PAGMOTORS (PORTO ALEGRE)<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
 
@@ -47,13 +60,15 @@ function toggleValorMercado() {
     
     🔖Opcionais: ${opcionais}<br>
     📝Avaliação Superficial: ${avaliacao_superficial}<br>
-    📎Observação: ${observacoes}<br><br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
+    📎Observação: ${observacoes}<br>
+    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
     📷PARA MAIS FOTOS CLICK NO LINK<br>
     ${link_fotos}<br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
-    📈Valor Fipe: R$ ${valor_fipe}<br>
-    📉Investimento: R$ ${custo_investimento}<br>`;
+    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
+    📈Valor Fipe: R$ ${fipe}<br>
+    📉Investimento: R$ ${investimento}<br>`;
+
+   
 
     if (tem_valor_mercado) {
       texto += `🏦Valor de Mercado: ${valor_mercado}<br>`;
