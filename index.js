@@ -5,6 +5,18 @@ function toggleValorMercado() {
     valorMercadoInput.disabled = !temValorMercadoCheckbox.checked;
   }
 
+
+  function toggleInput(checkboxId, inputId) {
+    var checkbox = document.getElementById(checkboxId);
+    var input = document.getElementById(inputId);
+    
+    if (checkbox.checked) {
+      input.disabled = false;
+    } else {
+      input.disabled = true;
+    }
+  }
+
   function gerarTexto() {
     const marca = document.getElementById("marca").value;
     const modelo = document.getElementById("modelo").value;
@@ -20,8 +32,13 @@ function toggleValorMercado() {
     const avaliacao_superficial = document.getElementById("avaliacao_superficial").value;
     const observacoes = document.getElementById("observacoes").value;
     const valor_fipe = document.getElementById("valor_fipe").value;
+    
     const custo_investimento = document.getElementById("custo_investimento").value;
+    const tem_valor_invest = document.getElementById("tem_valor_invest").checked;
+
     const link_fotos = document.getElementById("link_fotos").value;
+    const tem_link_fotos = document.getElementById("tem_link_fotos").checked;
+
     const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
     const valor_mercado = document.getElementById("valor_mercado").value;
 
@@ -65,10 +82,12 @@ function toggleValorMercado() {
     📷PARA MAIS FOTOS CLICK NO LINK<br>
     ${link_fotos}<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
-    📈Valor Fipe: R$ ${fipe}<br>
-    📉Investimento: R$ ${investimento}<br>`;
+    📈Valor Fipe: R$ ${fipe}<br>`;
+    
 
-   
+    if (tem_valor_invest) {
+      texto += `📉Investimento: R$ ${investimento}<br>`;
+    }
 
     if (tem_valor_mercado) {
       texto += `🏦Valor de Mercado: ${valor_mercado}<br>`;
