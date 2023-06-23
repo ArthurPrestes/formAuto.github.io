@@ -23,3 +23,6 @@
     display: none;
   }
   
+  .custom-checkbox {
+    transform: scale(1.3) !important; /* Aumenta o tamanho do checkbox */
+  }

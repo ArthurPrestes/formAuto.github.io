@@ -15,30 +15,41 @@ function toggleValorMercado() {
     } else {
       input.disabled = true;
     }
-  }
+  } 
 
   function gerarTexto() {
     const marca = document.getElementById("marca").value;
+    const check_marca = document.getElementById("check_marca").value;
     const modelo = document.getElementById("modelo").value;
+    const check_modelo = document.getElementById("check_modelo").value;
     const ano = document.getElementById("ano").value;
+    const check_ano = document.getElementById("check_ano").value;
     const anoMod = document.getElementById("anoMod").value;
+    const check_anoMod = document.getElementById("check_anoMod").value;
     const km = document.getElementById("km").value;
+    const check_km = document.getElementById("check_km").value;
     const combustivel = document.getElementById("combustivel").value;
+    const check_combustivel = document.getElementById("check_combustivel").value;
     const tipo_cambio = document.getElementById("tipo_cambio").value;
+    const check_tipo_cambio = document.getElementById("check_tipo_cambio").value;
     const status_pneu = document.getElementById("status_pneu").value;
+    const check_status_pneu = document.getElementById("check_status_pneu").value;
     const ipva = document.getElementById("ipva").value;
+    const check_ipva = document.getElementById("check_ipva").value;
     const placa = document.getElementById("placa").value;
+    const check_placa = document.getElementById("check_placa").value;
     const opcionais = document.getElementById("opcionais").value;
+    const check_opcionais = document.getElementById("check_opcionais").value;
     const avaliacao_superficial = document.getElementById("avaliacao_superficial").value;
+    const check_avaliacao_superficial = document.getElementById("check_avaliacao_superficial").value;
     const observacoes = document.getElementById("observacoes").value;
+    const check_observacoes = document.getElementById("check_observacoes").value;
     const valor_fipe = document.getElementById("valor_fipe").value;
-    
+    const tem_valor_fipe = document.getElementById("tem_valor_fipe").checked;
     const custo_investimento = document.getElementById("custo_investimento").value;
     const tem_valor_invest = document.getElementById("tem_valor_invest").checked;
-
     const link_fotos = document.getElementById("link_fotos").value;
     const tem_link_fotos = document.getElementById("tem_link_fotos").checked;
-
     const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
     const valor_mercado = document.getElementById("valor_mercado").value;
 
@@ -56,34 +67,84 @@ function toggleValorMercado() {
     var investimento = adicionarParteDecimal(custo_investimento);
 
     let texto = `📍 PAGMOTORS (PORTO ALEGRE)<br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
+    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>`;
 
-    ${marca} ${modelo}<br><br>
+    if(check_marca){
+      texto += `${marca} `;
+    }
 
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
+    if(check_modelo){
+      texto += `${modelo}<br><br>
+      ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>`;
+    }
 
-    ⏳Ano: ${ano}/${anoMod}<br>
-    🎛KM: ${km}<br>
-    ⛽ Combustível: ${combustivel}<br>
-    🕹Cambio: ${tipo_cambio}<br>
-    🛞Pneus: ${status_pneu}<br>
-    📄Ipva: ${ipva}<br>
-    ⚠ Placa:`;  
+    if(check_ano & check_anoMod){
+      texto += `⏳Ano: ${ano}/${anoMod}<br>`;
+    }else if(check_ano){
+      texto += `⏳Ano: ${ano}<br>`;
+    }else if(check_anoMod){
+      texto += `⏳Ano: ${anoMod}<br>`;
+    }
+
+    if(check_km){
+      texto += `🎛KM: ${km}<br>`;
+    }
+
     
-    first_placa = placa[0]
-    last_placa = placa[6]
-    texto += `${first_placa} final ${last_placa}<br>
+    if(check_combustivel){
+      texto += `⛽ Combustível: ${combustivel}<br>`;
+    }
+
     
+    if(check_tipo_cambio){
+      texto += `🕹Cambio: ${tipo_cambio}<br>`;
+    }
+
     
-    🔖Opcionais: ${opcionais}<br>
-    📝Avaliação Superficial: ${avaliacao_superficial}<br>
-    📎Observação: ${observacoes}<br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
-    📷PARA MAIS FOTOS CLICK NO LINK<br>
-    ${link_fotos}<br>
-    ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
+    if(check_status_pneu){
+      texto += `🛞Pneus: ${status_pneu}<br>`;
+    }
+    
+    if(check_ipva){
+      texto += `📄Ipva: ${ipva}<br>`;
+    }
+    
+    if(check_placa){
+      var quantidade_digitos = placa.toString().length;
+      console.log(quantidade_digitos);
+      if(placa.toString().length === 7){
+        first_placa = placa[0]
+        last_placa = placa[6]
+        texto +=`⚠ Placa:${first_placa} final ${last_placa}<br>`;
+      }else{
+        texto +=`⚠ Placa: ${placa}<br>`;
+      }
+    }
+
+    if(check_opcionais){
+      texto +=`🔖Opcionais: ${opcionais}<br>`;
+    }
+
+    if(check_avaliacao_superficial){
+      texto +=`📝Avaliação Superficial: ${avaliacao_superficial}<br>`;
+    }
+
+    if(check_observacoes){
+      texto +=`📎Observação: ${observacoes}<br>`
+    }
+    
+    if (tem_link_fotos) {
+      texto += 
+      `▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
+      📷PARA MAIS FOTOS CLICK NO LINK<br>
+      ${link_fotos}<br>`;
+    }
+    
+    if(tem_valor_fipe){
+    texto += 
+    `▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br>
     📈Valor Fipe: R$ ${fipe}<br>`;
-    
+    }
 
     if (tem_valor_invest) {
       texto += `📉Investimento: R$ ${investimento}<br>`;

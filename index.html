@@ -18,24 +18,38 @@
 			<div class="row">
 				<div class="foto-container">
 					<label for="foto" class="foto-label">
-					  Clique aqui ou arraste e solte a foto
+						Clique aqui ou arraste e solte a foto
 					</label>
 					<input type="file" id="foto" class="foto-input" onchange="exibirFotoPreview(event)">
 				</div>
 			</div>
-
+	
 			<div class="row">
-
+	
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="marca">Marca</label>
-						<input type="text" class="form-control" id="marca" aria-describedby="marcaHelp" placeholder="Ex: BMW, Porsche ..." required>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="checkbox" class="custom-checkbox" id="check_marca" onclick="toggleInput('check_marca', 'marca')" checked>
+								</div>
+							</div>
+							<input type="text" class="form-control" id="marca" aria-describedby="marcaHelp" placeholder="Ex: BMW, Porsche ..." required>
+						</div>
 						<small id="marcaHelp" class="form-text text-muted">Preencha com apenas a marca do veículo.</small>
 					</div>
-
+	
 					<div class="form-group">
 						<label for="modelo">Modelo</label>
-						<input type="text" class="form-control" id="modelo" aria-describedby="modeloHelp" placeholder="Ex: Porsche Macan 2.0 turbo" required>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="checkbox" class="custom-checkbox" id="check_modelo" onclick="toggleInput('check_modelo', 'modelo')" checked>
+								</div>
+							</div>
+							<input type="text" class="form-control" id="modelo" aria-describedby="modeloHelp" placeholder="Ex: Porsche Macan 2.0 turbo" required>
+						</div>
 						<small id="modeloHelp" class="form-text text-muted">Preencha com o motor também, conforme o exemplo.</small>
 					</div>
 	
@@ -43,98 +57,195 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="ano">Ano de fabricação</label>
-								<input type="number" class="form-control" id="ano" aria-describedby="anoHelp" placeholder="Preencha com o ano do veículo." required>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_ano" onclick="toggleInput('check_ano', 'ano')" checked>
+										</div>
+									</div>
+									<input type="number" class="form-control" id="ano" aria-describedby="anoHelp" placeholder="Preencha com o ano do veículo." required>
+								</div>
 								<small id="anoHelp" class="form-text text-muted">Preencha com o ano de fabricação.</small>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="anoMod">Ano do modelo</label>
-								<input type="number" class="form-control" id="anoMod" aria-describedby="anoModHelp" placeholder="Preencha com o ano do modelo do veículo." required>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_anoMod" onclick="toggleInput('check_anoMod', 'anoMod')" checked>
+										</div>
+									</div>
+									<input type="number" class="form-control" id="anoMod" aria-describedby="anoModHelp" placeholder="Preencha com o ano do modelo do veículo." required>
+								</div>
 								<small id="anoModHelp" class="form-text text-muted">Preencha com o ano do modelo.</small>
 							</div>
 						</div>
 					</div>
+	
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="combustivel">Combustível:</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-combustivel" id="check_combustivel" onclick="toggleInput('check_combustivel', 'combustivel')" checked>
+										</div>
+									</div>
+									<select class="form-control" id="combustivel" name="combustivel" required>
+										<option value="Gasolina">Gasolina</option>
+										<option value="Diesel">Diesel</option>
+										<option value="Álcool">Álcool</option>
+										<option value="Flex">Flex</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="status_pneu">Status do Pneu:</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_status_pneu" onclick="toggleInput('check_status_pneu','status_pneu')" checked>
+										</div>
+									</div>
+									<select class="form-control" id="status_pneu" name="status_pneu" required>
+										<option value="Bom">Bom</option>
+										<option value="Regular">Regular</option>
+										<option value="Ruim">Ruim</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="placa">Placa:</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_placa" onclick="toggleInput('check_placa', 'placa')" checked>
+										</div>
+									</div>
+									<input type="text" class="form-control" id="placa" name="placa" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="km">KM</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_km" onclick="toggleInput('check_km', 'km')" checked>
+										</div>
+									</div>
+									<input type="number" class="form-control" id="km" aria-describedby="kmHelp" placeholder="Preencha com a quilometragem correta do veículo." required>
+								</div>
+								<small id="kmHelp" class="form-text text-muted">Preencha com a quilometragem correta do veículo.</small>
+							</div>
+						</div>
+					</div>
+	
 					
-					<div class="form-group">
-						<label for="km">KM</label>
-						<input type="number" class="form-control" id="km" aria-describedby="kmHelp" placeholder="Preencha com a quilometragem correta do veículo." required>
-						<small id="kmHelp" class="form-text text-muted">Preencha com a quilometragem correta do veículo.</small>
-					</div>
 	
-					<div class="form-group">
-						<label for="combustivel">Combustível:</label>
-						<select class="form-control" id="combustivel" name="combustivel" required>
-						  <option value="Gasolina">Gasolina</option>
-						  <option value="Diesel">Diesel</option>
-						  <option value="Álcool">Álcool</option>
-						  <option value="Flex">Flex</option>
-						</select>
-					</div>
-	
-					<div class="form-group">
-						<label for="status_pneu">Status do Pneu:</label>
-						<select class="form-control" id="status_pneu" name="status_pneu" required>
-						  <option value="Bom">Bom</option>
-						  <option value="Regular">Regular</option>
-						  <option value="Ruim">Ruim</option>
-						</select>
-					</div>
-	
-					<div class="form-group">
-						<label for="placa">Placa:</label>
-						<input type="text" class="form-control" id="placa" name="placa" required>
-					</div>
+					
 	
 					<div class="form-group">
 						<label for="avaliacao_superficial">Avaliação Superficial:</label>
-						<textarea class="form-control" id="avaliacao_superficial" name="avaliacao_superficial" required></textarea>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="checkbox" class="custom-checkbox" id="check_avaliacao_superficial" onclick="toggleInput('check_avaliacao_superficial', 'avaliacao_superficial')" checked>
+								</div>
+							</div>
+							<textarea class="form-control" id="avaliacao_superficial" name="avaliacao_superficial" required></textarea>
+						</div>
 					</div>
 	
-					
+	
 				</div>
 	
 				<div class="col-md-6">
-					
-	
-					<div class="form-group">
-						<label for="tipo_cambio">Tipo de Câmbio:</label>
-						<select class="form-control" id="tipo_cambio" name="tipo_cambio" required>
-						  <option value="Manual">Manual</option>
-						  <option value="Automático">Automático</option>
-						  <option value="CVT">CVT</option>
-						</select>
-					</div>
-	
-					<div class="form-group">
-						<label for="ipva">IPVA:</label>
-						<input type="text" class="form-control" id="ipva" name="ipva" required>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="tipo_'cam'bio">Tipo de Câmbio:</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_tipo_cambio" onclick="toggleInput('check_tipo_cambio','tipo_cambio')" checked>
+										</div>
+									</div>
+									<select class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+										<option value="Manual">Manual</option>
+										<option value="Automático">Automático</option>
+										<option value="CVT">CVT</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="ipva">IPVA:</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text">
+											<input type="checkbox" class="custom-checkbox" id="check_ipva" onclick="toggleInput('check_ipva','ipva')" checked>
+										</div>
+									</div>
+									<input type="text" class="form-control" id="ipva" name="ipva" required>
+								</div>
+							</div>
+						</div>
 					</div>
 	
 					<div class="form-group">
 						<label for="opcionais">Opcionais:</label>
-						<textarea class="form-control" id="opcionais" name="opcionais"></textarea>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="checkbox" class="custom-checkbox" id="check_opcionais" onclick="toggleInput('check_opcionais','opcionais')" checked>
+								</div>
+							</div>
+							<textarea class="form-control" id="opcionais" name="opcionais"></textarea>
+						</div>
 					</div>
 	
 					<div class="form-group">
 						<label for="observacoes">Observações:</label>
-						<textarea class="form-control" id="observacoes" name="observacoes"></textarea>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="checkbox" class="custom-checkbox" id="check_observacoes" onclick="toggleInput('check_observacoes','observacoes')" checked>
+								</div>
+							</div>
+							<textarea class="form-control" id="observacoes" name="observacoes"></textarea>
+						</div>
 					</div>
 					
 					<div class="row">
 						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="valor_fipe">Valor da Tabela Fipe:</label>
-							<div class="input-group mb-3">
+							<div class="form-group">
+							  <label for="custo_investimento">Valor da Tabela Fipe:</label>
+							  <div class="input-group">
 								<div class="input-group-prepend">
-								  <span class="input-group-text">R$</span>
+								  <div class="input-group-text">
+									<!--Usar o evento onclick, caso contrario não funciona no IOS-->
+									<input type="checkbox" class="custom-checkbox" id="tem_valor_fipe" onclick="toggleInput('tem_valor_fipe', 'valor_fipe')"  checked>
+								  </div>
 								</div>
-								<input type="text" id="valor_fipe" class="form-control" aria-label="Quantia">
-								<div class="input-group-append">
-								  <span class="input-group-text">.00</span>
-								</div>
+								<input type="text" id="valor_fipe" class="form-control" aria-label="Text input with checkbox">
+							  </div>
 							</div>
-						  </div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
@@ -142,10 +253,11 @@
 							  <div class="input-group">
 								<div class="input-group-prepend">
 								  <div class="input-group-text">
-									<input type="checkbox" id="tem_valor_invest" onclick="toggleInput('tem_valor_invest', 'custo_investimento')">
+									<!--Usar o evento onclick, caso contrario não funciona no IOS-->
+									<input type="checkbox" class="custom-checkbox" id="tem_valor_invest" onclick="toggleInput('tem_valor_invest', 'custo_investimento')" checked>
 								  </div>
 								</div>
-								<input type="text" id="custo_investimento" class="form-control" disabled aria-label="Text input with checkbox">
+								<input type="text" id="custo_investimento" class="form-control" aria-label="Text input with checkbox">
 							  </div>
 							</div>
 						</div>
@@ -157,10 +269,10 @@
 						<div class="input-group">
 							<div class="input-group-prepend">
 							  <div class="input-group-text">
-								<input type="checkbox" id="tem_valor_mercado" onchange="toggleValorMercado()">
+								<input type="checkbox" class="custom-checkbox" id="tem_valor_mercado" onchange="toggleValorMercado()" checked>
 							  </div>
 							</div>
-							<input type="text" id="valor_mercado" class="form-control" disabled aria-label="Text input with checkbox">
+							<input type="text" id="valor_mercado" class="form-control" aria-label="Text input with checkbox">
 						</div>
 					</div>
 
@@ -169,10 +281,10 @@
 						<div class="input-group">
 							<div class="input-group-prepend">
 							  <div class="input-group-text">
-								<input type="checkbox" id="tem_link_fotos" onchange="toggleInput('tem_link_fotos', 'link_fotos')">
+								<input type="checkbox" class="custom-checkbox" id="tem_link_fotos" onclick="toggleInput('tem_link_fotos', 'link_fotos')" checked>
 							  </div>
 							</div>
-							<input type="text" id="link_fotos" class="form-control" disabled aria-label="Text input with checkbox">
+							<input type="text" id="link_fotos" class="form-control" aria-label="Text input with checkbox">
 						</div>
 					</div>
 				</div>
