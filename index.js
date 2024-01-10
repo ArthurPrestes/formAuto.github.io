@@ -69,6 +69,13 @@ function toggleValorMercado() {
     const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
     const valor_mercado = document.getElementById("valor_mercado").value;
 
+    const checkContatoPagMotors = document.getElementById("checkContatoPagMotors").checked;
+
+    const checkContatoArthur = document.getElementById("checkContatoArthur").checked;
+    
+    const checkContatoHenrique = document.getElementById("checkContatoHenrique").checked;
+  
+
     function adicionarParteDecimal(numero) {
       if (/\.\d{2}$/.test(numero)) {
         numero = numero.replace('.', ',');
@@ -82,15 +89,15 @@ function toggleValorMercado() {
     var fipe = adicionarParteDecimal(valor_fipe);
     var investimento = adicionarParteDecimal(custo_investimento);
 
-    let texto = `📍 PAGMOTORS (PORTO ALEGRE)<br>
+    let texto = `📍 *PAGMOTORS (PORTO ALEGRE)*<br>
     ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>`;
 
     if(check_marca){
-      texto += `${marca} `;
+      texto += `*${marca} `;
     }
 
     if(check_modelo){
-      texto += `${modelo}<br><br>
+      texto += `${modelo}*<br><br>
       ▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>`;
     }
 
@@ -163,16 +170,30 @@ function toggleValorMercado() {
     }
 
     if (tem_valor_invest) {
-      texto += `📉Investimento: R$ ${investimento}<br>`;
+      texto += `📉*Investimento: R$ ${investimento}*<br>`;
     }
 
     if (tem_valor_mercado) {
       texto += `🏦Valor de Mercado: ${valor_mercado}<br>`;
     }
 
-    texto += `▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>
-    CONTATO PAGMOTORS <br>
-    📲 (51)99994-2576`;
+
+    if(checkContatoPagMotors || checkContatoArthur || checkContatoHenrique){
+      texto += `▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃<br><br>`;
+
+      if (checkContatoPagMotors) {
+        texto += `*CONTATO PAGMOTORS* <br>
+        📲 *(51)99994-2576* <br>`;
+      }
+      if (checkContatoArthur) {
+        texto += `*NEGOCIADOR: ARTHUR PRESTES* <br>
+        📲 *(51)99549-9811* <br>`;
+      }
+      if (checkContatoHenrique) {
+        texto += `*GESTOR: HENRIQUE GABRIEL* <br>
+        📲 *(51)98189-7086* <br>`;
+      }
+    }
     
     document.getElementById("texto").innerHTML = texto;
   }
@@ -205,10 +226,18 @@ function toggleValorMercado() {
     var fotoInput = document.getElementById("foto");
 
     if (fotoInput.files.length > 0) {
-        var foto = fotoInput.files[0];
-        var formData = new FormData();
-        formData.append("texto", texto);
-        formData.append("foto", foto);
+      var foto = fotoInput.files[0];
+      var textoCodificado = encodeURIComponent(texto);
+      
+      // Criar um link para a imagem
+      var imagemLink = window.URL.createObjectURL(foto);
+      
+      // Montar a mensagem com a imagem
+      var mensagem = textoCodificado + "%0A" + imagemLink;
+      
+      // Criar o link para o WhatsApp
+      var link = "https://api.whatsapp.com/send?text=" + mensagem;
+      window.open(link);
 
         // Enviar o formData para o servidor ou manipulá-lo de acordo com suas necessidades
         // ...
