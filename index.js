@@ -19,37 +19,53 @@ function toggleValorMercado() {
 
   function gerarTexto() {
     const marca = document.getElementById("marca").value;
-    const check_marca = document.getElementById("check_marca").value;
+    const check_marca = document.getElementById("check_marca").checked;
+
     const modelo = document.getElementById("modelo").value;
-    const check_modelo = document.getElementById("check_modelo").value;
+    const check_modelo = document.getElementById("check_modelo").checked;
+
     const ano = document.getElementById("ano").value;
-    const check_ano = document.getElementById("check_ano").value;
+    const check_ano = document.getElementById("check_ano").checked;
+
     const anoMod = document.getElementById("anoMod").value;
-    const check_anoMod = document.getElementById("check_anoMod").value;
+    const check_anoMod = document.getElementById("check_anoMod").checked;
+
     const km = document.getElementById("km").value;
-    const check_km = document.getElementById("check_km").value;
+    const check_km = document.getElementById("check_km").checked;
+
     const combustivel = document.getElementById("combustivel").value;
-    const check_combustivel = document.getElementById("check_combustivel").value;
+    const check_combustivel = document.getElementById("check_combustivel").checked;
+
     const tipo_cambio = document.getElementById("tipo_cambio").value;
-    const check_tipo_cambio = document.getElementById("check_tipo_cambio").value;
+    const check_tipo_cambio = document.getElementById("check_tipo_cambio").checked;
+
     const status_pneu = document.getElementById("status_pneu").value;
-    const check_status_pneu = document.getElementById("check_status_pneu").value;
+    const check_status_pneu = document.getElementById("check_status_pneu").checked;
+
     const ipva = document.getElementById("ipva").value;
-    const check_ipva = document.getElementById("check_ipva").value;
+    const check_ipva = document.getElementById("check_ipva").checked;
+
     const placa = document.getElementById("placa").value;
-    const check_placa = document.getElementById("check_placa").value;
+    const check_placa = document.getElementById("check_placa").checked;
+
     const opcionais = document.getElementById("opcionais").value;
-    const check_opcionais = document.getElementById("check_opcionais").value;
+    const check_opcionais = document.getElementById("check_opcionais").checked;
+
     const avaliacao_superficial = document.getElementById("avaliacao_superficial").value;
-    const check_avaliacao_superficial = document.getElementById("check_avaliacao_superficial").value;
+    const check_avaliacao_superficial = document.getElementById("check_avaliacao_superficial").checked;
+
     const observacoes = document.getElementById("observacoes").value;
-    const check_observacoes = document.getElementById("check_observacoes").value;
+    const check_observacoes = document.getElementById("check_observacoes").checked;
+
     const valor_fipe = document.getElementById("valor_fipe").value;
     const tem_valor_fipe = document.getElementById("tem_valor_fipe").checked;
+
     const custo_investimento = document.getElementById("custo_investimento").value;
     const tem_valor_invest = document.getElementById("tem_valor_invest").checked;
+
     const link_fotos = document.getElementById("link_fotos").value;
     const tem_link_fotos = document.getElementById("tem_link_fotos").checked;
+
     const tem_valor_mercado = document.getElementById("tem_valor_mercado").checked;
     const valor_mercado = document.getElementById("valor_mercado").value;
 
